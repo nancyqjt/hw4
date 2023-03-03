@@ -1,15 +1,19 @@
-<h1>New Place</h1>
+<body class="container">
+  <h1>New Place</h1>
 
-<% if @current_user %>
-  <%= form_with :model => @place do |form| %>
-    <p>
-      <%= form.label "name" %>
-      <%= form.text_field "name" %>
-    </p>
-    <p>
-      <button type="submit" class="btn btn-outline-dark">Add a New Place</button>
-    </p>
+  <% if @current_user %>
+    <%= form_with :model => @place do |form| %>
+      <p>
+        <%= form.label "name" %>
+        <%= form.text_field "name" %>
+      </p>
+      <div class="mt-5">
+        <p>
+          <button type="submit" class="btn btn-outline-dark">Add a New Place</button>
+        </p>
+      </div>
+    <% end %>
+  <% else %>
+    You must first <a href="/login" class="link-success">login</a> to post.
   <% end %>
-<% else %>
-  You must first <a href="/login" class="link-success">login</a> to post.
-<% end %>
+</body>
