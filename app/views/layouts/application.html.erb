@@ -5,37 +5,60 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <link rel="stylesheet" href="/stylesheets/application.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
   </head>
 
-  <body>
-    <p>
-      <!-- if user logged in -->
-      <% if @current_user %>
-        Hey, <%= @current_user["username"] %>
-        <a href="/logout">Logout</a>
-      <!-- else -->
-      <% else %>
-        <a href="/sessions/new">Login</a>
-        |
-        <a href="/users/new">Sign Up</a>
-      <% end %>
-    </p>
-    
-    <div>
-      <p>
-        <%= flash["notice"] %>
-      </p>
-    </div>
-    
-    <div>
-      <a href="/">Home</a>
-      <a href="/logout">Logout</a>
-      <a href="/login">Login</a>
-      <a href="/users/new">Signup</a>
-    </div>
+<body class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Tacostagram</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <% if @current_user %>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/places">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link" href="/sessions/new">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/users/new">Signup</a>
+              </li>
+            <% end %>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
 
-    <%= yield %>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <%= flash["notice"] %>
+        </div>
+
+        <div class="col-md-9">
+          <p>
+            <% if @current_user %>
+              Welcome to the platform, <%= @current_user["username"] %>
+            <% else %>
+              Please login or signup. Thank you!
+            <% end %>
+          </p>
+        </div>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>
