@@ -10,7 +10,7 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary" class="navbar bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/places">My Travel Journal</a>
+        <a class="navbar-brand fw-semibold" href="/places">My Travel Journal</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,6 +31,20 @@
                 <a class="nav-link" href="/users/new">Signup</a>
               </li>
             <% end %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Menu
+              </a>
+              <ul class="dropdown-menu">
+                <% if @current_user %>
+                  <li><a class="dropdown-item" href="/places">Home</a></li>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                <% else %>
+                  <li><a class="dropdown-item" href="/sessions/new">Login</a></li>
+                  <li><a class="dropdown-item" href="/users/new">Signup</a></li>
+                <% end %>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
@@ -44,7 +58,7 @@
         </div>
 
         <div class="col-md-9">
-          <p>
+          <p class="text-decoration-underline">
             <% if @current_user %>
               Welcome to the platform, <%= @current_user["username"] %>
             <% else %>
