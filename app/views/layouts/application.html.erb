@@ -10,9 +10,25 @@
   </head>
 
   <body>
+    <p>
+      <!-- if user logged in -->
+      <% if @current_user %>
+        Hey, <%= @current_user["first_name"] %>
+        <a href="/logout">Logout</a>
+      <!-- else -->
+      <% else %>
+        <a href="/sessions/new">Login</a>
+        |
+        <a href="/users/new">Sign Up</a>
+      <% end %>
+    </p>
+    
     <div>
-      <%= flash["notice"] %>
+      <p>
+        <%= flash["notice"] %>
+      </p>
     </div>
+    
     <div>
       <a href="/">Home</a>
       <a href="/logout">Logout</a>
