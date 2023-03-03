@@ -11,10 +11,14 @@
     <%= form.text_field "description" %>
   </p>
   <p>
+      <%= form.label "image" %>
+      <%= form.text_field "image" %>
+  </p>
+  <p>
     <%= form.label "posted_on" %>
     <%= form.date_field "posted_on" %>
   </p>
   <p>
-    <%= form.submit %>
+    <button type="submit" class="btn btn-outline-dark">Upload a New Post</button>
   </p>
 <% end %>
