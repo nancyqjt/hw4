@@ -1,24 +1,28 @@
 <body class="container">
   <h1>New Post</h1>
 
-  <%= form_with :model => @post do |form| %>
-    <%= form.hidden_field "place_id" %>
-    <p>
-      <%= form.label "title" %>
-      <%= form.text_field "title" %>
-    </p>
-    <p>
-      <%= form.label "description" %>
-      <%= form.text_field "description" %>
-    </p>
-    <p>
-      <%= form.label "posted_on" %>
-      <%= form.date_field "posted_on" %>
-    </p>
-    <div class="mt-5">
+  <% if @current_user %>
+    <%= form_with :model => @post do |form| %>
+      <%= form.hidden_field "place_id" %>
       <p>
-        <button type="submit" class="btn btn-outline-dark">Upload a New Post</button>
+        <%= form.label "title" %>
+        <%= form.text_field "title" %>
       </p>
-    </div>
+      <p>
+        <%= form.label "description" %>
+        <%= form.text_field "description" %>
+      </p>
+      <p>
+        <%= form.label "posted_on" %>
+        <%= form.date_field "posted_on" %>
+      </p>
+      <div class="mt-5">
+        <p>
+          <button type="submit" class="btn btn-outline-dark">Upload a New Post</button>
+        </p>
+      </div>
+    <% end %>
+  <% else %>
+    You must first <a href="/login" class="link-success">login</a> to post.
   <% end %>
 </body>
