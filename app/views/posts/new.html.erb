@@ -16,6 +16,10 @@
         <%= form.label "posted_on" %>
         <%= form.date_field "posted_on" %>
       </p>
+      <p>
+        <%= form.label "uploaded_image", :class => "form-label" %>
+        <%= form.file_field "uploaded_image", :accept => "image/png,image/jpg,image/jpeg,image/gif", :class => "form-control" %>
+      </p>
       <div class="mt-5">
         <p>
           <button type="submit" class="btn btn-outline-dark">Upload a New Post</button>
